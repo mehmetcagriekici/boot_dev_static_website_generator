@@ -1,0 +1,26 @@
+from enum import Enum
+
+# categorize inline texts
+class TextType(Enum):
+    TEXT = "text"
+    BOLD = "bold"
+    ITALIC = "italic"
+    CODE = "code"
+    LINK = "link"
+    IMAGE = "image"
+
+
+class TextNode():
+    def __init__(self, text, text_type, url=None):
+        self.text = text
+        self.text_type = text_type
+        self.url = url
+
+    def __eq__(self, text_node):
+        if not text_node:
+            return False
+        
+        return self.text == text_node.text and self.text_type == text_node.text_type and self.url == text_node.url
+    
+    def __repr__(self):
+        return f"TextNode({self.text}, {self.text_type.value}{", " + self.url if self.url else ""})"
