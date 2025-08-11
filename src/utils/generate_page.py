@@ -2,7 +2,7 @@ import os
 from utils.markdown_to_html_node import markdown_to_html_node
 from utils.extract_title import extract_title
 
-def generate_page(from_path, template_path, dest_path):
+def generate_page(from_path, template_path, dest_path, base_path):
     # Print a message like "Generating page from from_path to dest_path using template_path".
     print(f"Generating page from {from_path} to {dest_path} using {template_path}")
 
@@ -21,7 +21,7 @@ def generate_page(from_path, template_path, dest_path):
     page_title = extract_title(markdown)
 
     # Replace the {{ Title }} and {{ Content }} placeholders in the template with the HTML and title you generated.
-    new_template = template.replace("{{ Title }}", page_title).replace("{{ Content }}", html_string).replace('href="/', f'href="{from_path}').replace('src="/', f'src="{from_path}')
+    new_template = template.replace("{{ Title }}", page_title).replace("{{ Content }}", html_string).replace('href="/', f'href="{base_path}').replace('src="/', f'src="{base_path}')
 
     # Write the new full HTML page to a file at dest_path. Be sure to create any necessary directories if they don't exist.
     if not os.path.dirname(dest_path):
