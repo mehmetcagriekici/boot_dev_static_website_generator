@@ -2,7 +2,7 @@ import os, shutil
 
 # Write a recursive function that copies all the contents from a source directory to a destination directory (in our case, static to public)
 def copy_static():
-    path_to_public = "public"
+    path_to_public = "docs"
     path_to_static = "static"
 
     # It should first delete all the contents of the destination directory (public) to ensure that the copy is clean.
